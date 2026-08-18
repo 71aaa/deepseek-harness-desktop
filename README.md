@@ -1,5 +1,13 @@
 # DeepSeek Harness Desktop
 ![DeepSeek Harness Desktop Screenshot](screenshot-main.jpg)
+
+---
+
+## 📦 下载
+
+Windows x64 用户：
+
+[⬇️ 下载最新版 DeepSeek Harness Desktop](../../releases/latest)
 > Windows desktop launcher for DeepSeek Harness.
 
 > **This is a community project and is not affiliated with DeepSeek.**
