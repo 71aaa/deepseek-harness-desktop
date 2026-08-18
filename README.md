@@ -1,5 +1,5 @@
 # DeepSeek Harness Desktop
-
+![DeepSeek Harness Desktop Screenshot](screenshot-main.jpg)
 > Windows desktop launcher for DeepSeek Harness.
 
 > **This is a community project and is not affiliated with DeepSeek.**
