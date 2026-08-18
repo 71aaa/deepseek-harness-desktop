@@ -1,0 +1,6 @@
+﻿图标素材来源（官方，黑色鲸鱼）：
+1) 官方仓库: https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/web/public/favicon.svg
+2) 运行中的 Harness UI: http://127.0.0.1:3080/favicon.svg （与仓库字节完全一致）
+颜色: SVG 无显式 fill（SVG 默认黑色），dark 模式 CSS 才转白；桌面图标按用户要求渲染为纯黑 #000000
+形状: 原样使用官方 path 数据（viewBox 0 0 50 50），仅统一填充纯黑，未改绘
+获取日期: 2026-08-14

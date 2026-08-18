@@ -1,0 +1,21 @@
+# ===== 构建产物 =====
+bin/
+obj/
+publish/
+publish-*/
+
+# ===== 本地缓存 / 工具状态 =====
+.nuget/
+.dotnet/
+.vs/
+
+# ===== DeepSeek Harness 官方运行时（本地检查副本，不提交）=====
+dsh-runtime/
+
+# ===== 临时资源与过程文件 =====
+assets-src/_*
+
+# ===== 常规忽略 =====
+*.user
+*.log
+*.tmp

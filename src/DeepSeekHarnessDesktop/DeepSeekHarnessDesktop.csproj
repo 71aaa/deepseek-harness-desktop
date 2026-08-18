@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DeepSeekHarnessDesktop</RootNamespace>
+    <AssemblyName>DeepSeek Harness Desktop</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <Product>DeepSeek Harness Desktop</Product>
+    <AssemblyTitle>DeepSeek Harness Desktop</AssemblyTitle>
+    <Description>DeepSeek Harness 轻量级 Windows 桌面宿主：双击打开，点 X 关闭。</Description>
+    <Company>DeepSeek Harness Desktop</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WebView2 SDK：包含客户端 API 与 WPF 控件封装（Evergreen Runtime 由 Windows/Edge 提供） -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 应用图标：EXE 文件图标（ApplicationIcon）与窗口/任务栏图标（Window.Icon 的 Resource）共用同一官方图标 -->
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeepSeekHarnessDesktop.Core\DeepSeekHarnessDesktop.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\dsh-runtime\**\*">
+      <Link>dsh-runtime\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
