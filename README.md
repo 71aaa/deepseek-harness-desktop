@@ -1,5 +1,6 @@
 # DeepSeek Harness Desktop
 ![DeepSeek Harness Desktop Screenshot](screenshot-main.jpg)
+![Release](https://img.shields.io/github/v/release/71aaa/deepseek-harness-desktop)
 
 ---
 
