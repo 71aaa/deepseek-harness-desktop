@@ -9,9 +9,13 @@
         WindowStartupLocation="CenterScreen"
         Background="#F5F6F8">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
         <!-- 启动中视图 -->
-        <StackPanel x:Name="StartupView" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="620">
+        <StackPanel x:Name="StartupView" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="620">
             <TextBlock Text="DeepSeek Harness" FontSize="30" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="#1F2328"/>
             <TextBlock x:Name="StartupStatusText" Text="正在启动 DeepSeek Harness…" FontSize="16" Margin="0,28,0,0"
                        HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Foreground="#3A3F45"/>
@@ -21,7 +25,7 @@
         </StackPanel>
 
         <!-- 错误视图 -->
-        <StackPanel x:Name="ErrorView" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="620">
+        <StackPanel x:Name="ErrorView" Grid.Row="0" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="620">
             <TextBlock Text="DeepSeek Harness 启动失败" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" Foreground="#C0392B"/>
             <TextBlock x:Name="ErrorMessageText" FontSize="14" Margin="0,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Foreground="#3A3F45"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,32,0,0">
@@ -35,10 +39,23 @@
         </StackPanel>
 
         <!-- WebView2 视图（充满内容区域） -->
-        <wv2:WebView2 x:Name="WebView" Visibility="Collapsed"/>
+        <wv2:WebView2 x:Name="WebView" Grid.Row="0" Visibility="Collapsed"/>
+
+        <!-- 关于信息：位于独立底栏，避免被 WebView2 原生视图遮挡 -->
+        <Border Grid.Row="1" HorizontalAlignment="Left" Margin="14,0,14,14" Padding="10,7"
+                Background="#EEF5F6F8" BorderBrush="#D9DEE3" BorderThickness="1" CornerRadius="4">
+            <StackPanel>
+                <TextBlock Text="DeepSeek Harness Desktop" FontSize="12" FontWeight="SemiBold" Foreground="#1F2328"/>
+                <TextBlock x:Name="DesktopVersionText" FontSize="11" Margin="0,3,0,0" Foreground="#5B626A"/>
+                <TextBlock Text="Bundled Harness:" FontSize="11" Margin="0,7,0,0" Foreground="#5B626A"/>
+                <TextBlock x:Name="HarnessVersionText" FontSize="11" Foreground="#1F2328"/>
+                <TextBlock Text="Runtime:" FontSize="11" Margin="0,7,0,0" Foreground="#5B626A"/>
+                <TextBlock x:Name="RuntimeText" FontSize="11" Foreground="#1F2328"/>
+            </StackPanel>
+        </Border>
 
         <!-- 关闭遮罩 -->
-        <Grid x:Name="ShutdownOverlay" Visibility="Collapsed" Background="#CCFFFFFF">
+        <Grid x:Name="ShutdownOverlay" Grid.RowSpan="2" Visibility="Collapsed" Background="#CCFFFFFF">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ProgressBar IsIndeterminate="True" Height="4" Width="300"/>
                 <TextBlock x:Name="ShutdownText" Text="正在关闭 DeepSeek Harness…" FontSize="15" Margin="0,16,0,0"

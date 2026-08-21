@@ -82,6 +82,21 @@ v1.1.0 锁定并验证 `@deepseek-ai/dsh@0.1.0-rc.8`。Harness 升级需要生�
 | Node.js | 建议 LTS 版：https://nodejs.org/ （缺失时程序显示中文提示） |
 | Microsoft Edge WebView2 Runtime | Windows 10/11 通常已内置；缺失时程序提示并提供官方下载链接 |
 
+## 版本信息
+
+主窗口左下角会显示当前 Desktop 程序版本、随发布包提供的 Harness 版本和 runtime 类型。Desktop 版本来自程序集版本；Harness 版本来自随应用发布的 `runtime-manifest-rc8.json`。v1.1.0 显示为：
+
+```
+DeepSeek Harness Desktop
+Version: 1.1.0
+
+Bundled Harness:
+0.1.0-rc.8
+
+Runtime:
+Embedded
+```
+
 ## 开发者：如何构建 (Build from source)
 
 前提：已安装 .NET 8 SDK（x64）。

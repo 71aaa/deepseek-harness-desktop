@@ -23,7 +23,17 @@ public partial class MainWindow : Window
         InitializeComponent();
         _harness = harness;
         _log = log;
+        ShowVersionInfo();
         Closing += OnWindowClosing;
+    }
+
+    private void ShowVersionInfo()
+    {
+        var manifestPath = Path.Combine(AppContext.BaseDirectory, VersionInfoProvider.RuntimeManifestFileName);
+        var versionInfo = VersionInfoProvider.Read(typeof(MainWindow).Assembly.GetName().Version, manifestPath);
+        DesktopVersionText.Text = $"Version: {versionInfo.DesktopVersion}";
+        HarnessVersionText.Text = versionInfo.HarnessVersion;
+        RuntimeText.Text = versionInfo.Runtime;
     }
 
     public void StartFlow()
