@@ -1,0 +1,21 @@
+{
+  "gitCommit": "5a104b5a4becb5b3f9ca1e3ae61b94e6baa893f7",
+  "harnessVersion": "0.1.0-rc.8",
+  "nodeVersion": "v24.19.0",
+  "npmVersion": "11.17.0",
+  "buildTime": "2026-08-22T01:03:10+08:00",
+  "runtimeLockfileSha256": "3BC17E15F076004864357474D7D58C5FC1985F4A0EFC5BB029D8E6543D055D00",
+  "runtimeSpecPath": "runtime-spec/rc8",
+  "extraDependencies": [
+    {
+      "package": "@deepseek-ai/cordis-plugin-group",
+      "version": "1.0.1",
+      "reason": "Explicit peer dependency required by @deepseek-ai/dsh-app-boot@0.1.0-rc.8."
+    },
+    {
+      "package": "@deepseek-ai/dsh-scope",
+      "version": "0.1.0-rc.8",
+      "reason": "Peer dependency resolved by standard npm peer resolution and required by rc8 agent packages."
+    }
+  ]
+}
