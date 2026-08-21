@@ -6,13 +6,13 @@
 
 把 DeepSeek Harness 变成像普通 Windows 软件一样使用：**双击打开，点 `X` 关闭**，不需要命令行、不需要记住端口、不需要单独启动和关闭后台。
 
-本程序只是一个轻量级的“桌面宿主”（启动器 + 生命周期管家 + WebView2 外壳），DeepSeek Harness 本体始终使用官方最新版，不做任何修改。
+本程序只是一个轻量级的“桌面宿主”（启动器 + 生命周期管家 + WebView2 外壳）。v1.1.0 内置并验证了官方 `@deepseek-ai/dsh@0.1.0-rc.8` runtime，不修改 Harness 本体。
 
 ---
 
 ## 项目介绍
 
-- **一键启动**：双击 EXE，自动在后台静默启动官方最新版 Harness，等待就绪后把界面直接显示在程序窗口里（无地址栏、无标签页、无浏览器外壳）。
+- **一键启动**：双击 EXE，自动在后台静默启动内置的已验证 Harness runtime，等待就绪后把界面直接显示在程序窗口里（无地址栏、无标签页、无浏览器外壳）。
 - **一键关闭**：点窗口右上角 `X`，自动安全关闭**由本程序启动的** Harness、释放 3080 端口、清理状态记录、完全退出。
 - **崩溃恢复**：异常退出后，下次启动自动接管遗留的 Harness（严格 PID + 创建时间验证，不一致绝不接管）。
 - **单实例**：重复启动只激活已有窗口，不重复拉起第二份后台。
@@ -30,7 +30,7 @@
 
 1. 打开 `publish` 文件夹（或从 GitHub Releases 下载）；
 2. 双击 **`DeepSeek Harness Desktop.exe`**；
-3. 等待就绪后即可使用（首次启动需联网下载官方 Harness 包，可能稍慢）。
+3. 等待就绪后即可使用（首次启动会初始化本地 runtime，可能稍慢）。
 
 ### 怎么关闭
 
@@ -38,18 +38,18 @@
 
 ### 后台是什么
 
-程序自动管理的是官方命令（全项目唯一配置位置，代码中集中在 `AppConfig.cs` 一处）：
+程序自动管理的是随应用发布的官方命令（全项目唯一配置位置，代码中集中在 `AppConfig.cs` 一处）：
 
 ```
-npx --yes --prefer-online @deepseek-ai/dsh@latest web
+dsh-runtime\node_modules\.bin\dsh.cmd web
 ```
 
 - 启动前检测端口 3080：空闲 → 自动启动并等待就绪；已是 Harness → 直接连接显示；被其他程序占用 → 中文错误提示，不抢占、不乱杀。
 - 关闭时只结束**自己启动的**进程；外部 Harness 与你的其他 Node 程序绝不受影响。
 
-### 官方更新
+### Harness 更新
 
-Harness 使用 `@latest`，**不锁定版本**，官方更新后下次启动自动生效，桌面程序无需重新制作。只有当官方彻底改变 CLI 名称、`dsh web` 子命令、端口或 Web 服务机制时才需要更新本程序。
+v1.1.0 锁定并验证 `@deepseek-ai/dsh@0.1.0-rc.8`。Harness 升级需要生成新的完整 runtime、执行隔离验收并重新发布 Desktop；不会在用户启动时自动下载或替换版本。
 
 ## 日志位置
 
@@ -70,7 +70,7 @@ Harness 使用 `@latest`，**不锁定版本**，官方更新后下次启动自�
 
 | 依赖 | 说明 |
 | --- | --- |
-| Node.js（含 npm/npx） | 建议 LTS 版：https://nodejs.org/ （缺失时程序显示中文提示） |
+| Node.js | 建议 LTS 版：https://nodejs.org/ （缺失时程序显示中文提示） |
 | Microsoft Edge WebView2 Runtime | Windows 10/11 通常已内置；缺失时程序提示并提供官方下载链接 |
 
 ## 开发者：如何构建 (Build from source)
@@ -89,19 +89,19 @@ powershell -ExecutionPolicy Bypass -File build.ps1
 
 ## 已知限制 (Known limitations)
 
-- **需要 Node.js**：本程序依赖 Node.js / npx 启动官方 Harness，目标机需自行安装。
+- **需要 Node.js**：本程序依赖 Node.js 启动内置官方 Harness runtime，目标机需自行安装。
 - **dsh runtime 不包含在源码仓库**：DeepSeek Harness 本体是官方项目；本仓库仅包含桌面宿主代码，不携带 Harness 源码（本地 `dsh-runtime/` 为检查副本，已排除提交）。
-- **当前版本固定稳定 runtime**：桌面程序为固定构建版本（V1.0），不内置 Desktop 自身的自动升级；Harness 本体跟随 `@latest` 自动更新。
+- **当前版本固定稳定 runtime**：桌面程序为固定构建版本（V1.1.0），内置并锁定 `@deepseek-ai/dsh@0.1.0-rc.8`；不内置 Desktop 或 Harness 自身的自动升级。
 - 未做代码签名，部分电脑首次运行可能出现 SmartScreen 提示，需手动“仍要运行”。
 - 固定使用 3080 端口；被占用时不抢占、不杀进程，仅提示。
-- 首次启动需联网下载官方 Harness 包，极慢网络下可能超时，重试一次即可。
+- 首次启动会初始化本地 Harness runtime；不需要下载 Harness 包。
 - 强杀 / 断电场景下，遗留的 Harness 依赖下次启动的恢复机制接管。
 
 ## 常见问题 (FAQ)
 
 - **端口 3080 已被其他程序占用**：程序提示“端口 3080 已被其他程序占用，DeepSeek Harness 无法启动。”不抢占、不结束那个程序。
-- **首次启动很慢**：正在下载官方 Harness 最新版，属正常现象。
-- **提示“未检测到 Node.js / npx”**：安装 Node.js LTS 后重新打开程序。
+- **首次启动很慢**：正在初始化本地 Harness runtime，属正常现象。
+- **提示“未检测到 Node.js”**：安装 Node.js LTS 后重新打开程序。
 - **提示“未检测到可用的 Microsoft Edge WebView2 Runtime”**：点击提示里的链接安装官方 Runtime。
 - **点 X 没立刻关**：程序正在安全关闭 Harness 后台并等待端口释放（通常 1~5 秒），属正常行为。
 

@@ -1,9 +1,12 @@
 {
-  "gitCommit": "5a104b5a4becb5b3f9ca1e3ae61b94e6baa893f7",
+  "desktopVersion": "1.1.0",
+  "gitCommit": "059d3179c8c7c6bf24ef82e7e5efc4cc5f8a0204",
   "harnessVersion": "0.1.0-rc.8",
   "nodeVersion": "v24.19.0",
   "npmVersion": "11.17.0",
-  "buildTime": "2026-08-22T01:03:10+08:00",
+  "buildTime": "2026-08-22T01:43:41+08:00",
+  "runtimeHash": "3BC17E15F076004864357474D7D58C5FC1985F4A0EFC5BB029D8E6543D055D00",
+  "runtimeHashSource": "package-lock.json",
   "runtimeLockfileSha256": "3BC17E15F076004864357474D7D58C5FC1985F4A0EFC5BB029D8E6543D055D00",
   "runtimeSpecPath": "runtime-spec/rc8",
   "extraDependencies": [
