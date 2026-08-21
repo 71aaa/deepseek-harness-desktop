@@ -8,7 +8,7 @@
 
 Windows x64 用户：
 
-[⬇️ 下载 DeepSeek Harness Desktop v1.1.0（Windows x64）](../../releases/download/v1.1.0/DeepSeek-Harness-Desktop-v1.1.0-win-x64.zip)
+[⬇️ 下载 DeepSeek Harness Desktop v1.1.1（Windows x64）](../../releases/download/v1.1.1/DeepSeek-Harness-Desktop-v1.1.1-win-x64.zip)
 > Windows desktop launcher for DeepSeek Harness.
 
 > **This is a community project and is not affiliated with DeepSeek.**

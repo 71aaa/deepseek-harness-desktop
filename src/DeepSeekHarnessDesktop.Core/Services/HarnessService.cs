@@ -554,7 +554,7 @@ public sealed class HarnessService
             var psi = new ProcessStartInfo
             {
                 FileName = Environment.GetEnvironmentVariable("ComSpec") ?? "cmd.exe",
-                Arguments = "/d /s /c \"\"" + dshPath + "\" web\"",
+                Arguments = BuildLauncherArguments(dshPath),
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
@@ -584,6 +584,19 @@ public sealed class HarnessService
                 ex.Message,
                 ex);
         }
+    }
+
+    internal static string BuildLauncherArguments(string dshPath)
+    {
+        const StringComparison comparison = StringComparison.OrdinalIgnoreCase;
+        if (!AppConfig.HarnessLaunchCommand.StartsWith(AppConfig.LocalDshRelativePath, comparison))
+            throw new InvalidOperationException("Harness 启动命令必须以本地 dsh runtime 路径开头。");
+
+        var profileArguments = AppConfig.HarnessLaunchCommand[AppConfig.LocalDshRelativePath.Length..].TrimStart();
+        if (string.IsNullOrWhiteSpace(profileArguments))
+            throw new InvalidOperationException("Harness 启动命令缺少 profile 参数。");
+
+        return "/d /s /c \"\"" + dshPath + "\" " + profileArguments + "\"";
     }
 
     /// <summary>把 Harness 输出转发到日志文件（每行脱敏；任务自生自灭）。</summary>

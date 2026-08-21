@@ -12,7 +12,7 @@ public static class AppConfig
     public const string LocalDshRelativePath = @"dsh-runtime\node_modules\.bin\dsh.cmd";
 
     /// <summary>完整启动命令：静默启动随应用发布的本地 Harness 后台。</summary>
-    public const string HarnessLaunchCommand = LocalDshRelativePath + " web";
+    public const string HarnessLaunchCommand = LocalDshRelativePath + " --profile web --no-open";
 
     /// <summary>Harness Web 服务地址。</summary>
     public const string HarnessUrl = "http://127.0.0.1:3080";

@@ -1,4 +1,5 @@
 using DeepSeekHarnessDesktop.Core;
+using DeepSeekHarnessDesktop.Core.Services;
 using Xunit;
 
 namespace DeepSeekHarnessDesktop.Tests;
@@ -8,7 +9,7 @@ public class AppConfigTests
     [Fact]
     public void LaunchCommandIsExactOfficialCommand()
     {
-        Assert.Equal(@"dsh-runtime\node_modules\.bin\dsh.cmd web", AppConfig.HarnessLaunchCommand);
+        Assert.Equal(@"dsh-runtime\node_modules\.bin\dsh.cmd --profile web --no-open", AppConfig.HarnessLaunchCommand);
     }
 
     [Fact]
@@ -16,7 +17,16 @@ public class AppConfigTests
     {
         Assert.DoesNotContain("npx", AppConfig.HarnessLaunchCommand, StringComparison.OrdinalIgnoreCase);
         Assert.StartsWith(@"dsh-runtime\node_modules\.bin\dsh.cmd", AppConfig.HarnessLaunchCommand);
-        Assert.EndsWith("web", AppConfig.HarnessLaunchCommand);
+        Assert.EndsWith("--profile web --no-open", AppConfig.HarnessLaunchCommand);
+    }
+
+    [Fact]
+    public void LauncherArgumentsUseConfiguredWebProfileAndDisableBrowserOpen()
+    {
+        var arguments = HarnessService.BuildLauncherArguments(@"C:\runtime\dsh.cmd");
+
+        Assert.Contains("--profile web --no-open", arguments, StringComparison.Ordinal);
+        Assert.Equal("/d /s /c \"\"C:\\runtime\\dsh.cmd\" --profile web --no-open\"", arguments);
     }
 
     [Fact]

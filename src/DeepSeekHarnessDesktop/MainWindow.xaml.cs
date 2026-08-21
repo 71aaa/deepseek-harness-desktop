@@ -31,9 +31,7 @@ public partial class MainWindow : Window
     {
         var manifestPath = Path.Combine(AppContext.BaseDirectory, VersionInfoProvider.RuntimeManifestFileName);
         var versionInfo = VersionInfoProvider.Read(typeof(MainWindow).Assembly.GetName().Version, manifestPath);
-        DesktopVersionText.Text = $"Version: {versionInfo.DesktopVersion}";
-        HarnessVersionText.Text = versionInfo.HarnessVersion;
-        RuntimeText.Text = versionInfo.Runtime;
+        Title = $"DeepSeek Harness Desktop v{versionInfo.DesktopVersion}";
     }
 
     public void StartFlow()
