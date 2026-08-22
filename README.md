@@ -1,22 +1,6 @@
 # DeepSeek Harness Desktop
 ![DeepSeek Harness Desktop Screenshot](screenshot-main.jpg)
 
-## Screenshots
-
-### v1.2.0
-
-当前版本界面：
-
-![DeepSeek Harness Desktop v1.2.0](docs/screenshots/screenshot-v1.2.0.jpg)
-
-### v1.0.0
-
-初始版本界面：
-
-![DeepSeek Harness Desktop v1.0.0](docs/screenshots/screenshot-v1.0.0.jpg)
-
-![Release](https://img.shields.io/github/v/release/71aaa/deepseek-harness-desktop)
-
 ---
 
 ## 📦 下载
