@@ -8,14 +8,14 @@
 
 Windows x64 用户：
 
-[⬇️ 下载 DeepSeek Harness Desktop v1.1.1（Windows x64）](../../releases/download/v1.1.1/DeepSeek-Harness-Desktop-v1.1.1-win-x64.zip)
+[⬇️ 下载 DeepSeek Harness Desktop v1.2.0（Windows x64）](../../releases/download/v1.2.0/DeepSeek-Harness-Desktop-v1.2.0-win-x64.zip)
 > Windows desktop launcher for DeepSeek Harness.
 
 > **This is a community project and is not affiliated with DeepSeek.**
 
 把 DeepSeek Harness 变成像普通 Windows 软件一样使用：**双击打开，点 `X` 关闭**，不需要命令行、不需要记住端口、不需要单独启动和关闭后台。
 
-本程序只是一个轻量级的“桌面宿主”（启动器 + 生命周期管家 + WebView2 外壳）。v1.1.0 内置并验证了官方 `@deepseek-ai/dsh@0.1.0-rc.8` runtime，不修改 Harness 本体。
+本程序只是一个轻量级的“桌面宿主”（启动器 + 生命周期管家 + WebView2 外壳）。v1.2.0 内置并验证了官方 `@deepseek-ai/dsh@0.1.1-rc.2` runtime，不修改 Harness 本体。
 
 ---
 
@@ -50,7 +50,7 @@ Windows x64 用户：
 程序自动管理的是随应用发布的官方命令（全项目唯一配置位置，代码中集中在 `AppConfig.cs` 一处）：
 
 ```
-dsh-runtime\node_modules\.bin\dsh.cmd web
+dsh-runtime\node_modules\.bin\dsh.cmd --profile web --no-open
 ```
 
 - 启动前检测端口 3080：空闲 → 自动启动并等待就绪；已是 Harness → 直接连接显示；被其他程序占用 → 中文错误提示，不抢占、不乱杀。
@@ -58,7 +58,7 @@ dsh-runtime\node_modules\.bin\dsh.cmd web
 
 ### Harness 更新
 
-v1.1.0 锁定并验证 `@deepseek-ai/dsh@0.1.0-rc.8`。Harness 升级需要生成新的完整 runtime、执行隔离验收并重新发布 Desktop；不会在用户启动时自动下载或替换版本。
+v1.2.0 锁定并验证 `@deepseek-ai/dsh@0.1.1-rc.2`。Harness 升级需要生成新的完整 runtime、执行隔离验收并重新发布 Desktop；不会在用户启动时自动下载或替换版本。
 
 ## 日志位置
 
@@ -84,14 +84,14 @@ v1.1.0 锁定并验证 `@deepseek-ai/dsh@0.1.0-rc.8`。Harness 升级需要生�
 
 ## 版本信息
 
-主窗口左下角会显示当前 Desktop 程序版本、随发布包提供的 Harness 版本和 runtime 类型。Desktop 版本来自程序集版本；Harness 版本来自随应用发布的 `runtime-manifest-rc8.json`。v1.1.0 显示为：
+窗口标题会显示当前 Desktop 程序版本；随发布包提供的 Harness 版本和 runtime 类型记录在 `runtime-manifest-rc8.json`。该文件名为兼容现有发布逻辑而保留，内容已更新为 v1.2.0 runtime。当前版本为：
 
 ```
 DeepSeek Harness Desktop
-Version: 1.1.0
+Version: 1.2.0
 
 Bundled Harness:
-0.1.0-rc.8
+0.1.1-rc.2
 
 Runtime:
 Embedded
@@ -115,7 +115,7 @@ powershell -ExecutionPolicy Bypass -File build.ps1
 
 - **需要 Node.js**：本程序依赖 Node.js 启动内置官方 Harness runtime，目标机需自行安装。
 - **dsh runtime 不包含在源码仓库**：DeepSeek Harness 本体是官方项目；本仓库仅包含桌面宿主代码，不携带 Harness 源码（本地 `dsh-runtime/` 为检查副本，已排除提交）。
-- **当前版本固定稳定 runtime**：桌面程序为固定构建版本（V1.1.0），内置并锁定 `@deepseek-ai/dsh@0.1.0-rc.8`；不内置 Desktop 或 Harness 自身的自动升级。
+- **当前版本固定稳定 runtime**：桌面程序为固定构建版本（V1.2.0），内置并锁定 `@deepseek-ai/dsh@0.1.1-rc.2`；不内置 Desktop 或 Harness 自身的自动升级。
 - 未做代码签名，部分电脑首次运行可能出现 SmartScreen 提示，需手动“仍要运行”。
 - 固定使用 3080 端口；被占用时不抢占、不杀进程，仅提示。
 - 首次启动会初始化本地 Harness runtime；不需要下载 Harness 包。

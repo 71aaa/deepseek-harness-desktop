@@ -1,24 +1,29 @@
 {
-  "desktopVersion": "1.1.1",
-  "gitCommit": "059d3179c8c7c6bf24ef82e7e5efc4cc5f8a0204",
-  "harnessVersion": "0.1.0-rc.8",
+  "desktopVersion": "1.2.0",
+  "gitCommit": "05e3f6ddcd01e6a925dfb4afb5f7d92068c5070d",
+  "harnessVersion": "0.1.1-rc.2",
   "nodeVersion": "v24.19.0",
-  "npmVersion": "11.17.0",
-  "buildTime": "2026-08-22T01:43:41+08:00",
-  "runtimeHash": "3BC17E15F076004864357474D7D58C5FC1985F4A0EFC5BB029D8E6543D055D00",
-  "runtimeHashSource": "package-lock.json",
-  "runtimeLockfileSha256": "3BC17E15F076004864357474D7D58C5FC1985F4A0EFC5BB029D8E6543D055D00",
-  "runtimeSpecPath": "runtime-spec/rc8",
+  "packageManager": "pnpm 11.7.0",
+  "buildTime": "2026-08-22T08:02:14+08:00",
+  "runtimeHash": "FF6C30319762ADFB7E693D45B5FC09826C7C98C87F4D08CBDADD208798E07C3D",
+  "runtimeHashSource": "pnpm-lock.yaml",
+  "runtimeLockfileSha256": "FF6C30319762ADFB7E693D45B5FC09826C7C98C87F4D08CBDADD208798E07C3D",
+  "runtimeSource": "Official deepseek-harness tag dsh-v0.1.1-rc.2 (commit b150a551b8d465e31e418e1b2eaf5e79bbb7d28e), packed from apps/cli and installed in the final runtime directory.",
   "extraDependencies": [
     {
-      "package": "@deepseek-ai/cordis-plugin-group",
-      "version": "1.0.1",
-      "reason": "Explicit peer dependency required by @deepseek-ai/dsh-app-boot@0.1.0-rc.8."
+      "package": "node-pty",
+      "version": "1.2.0-beta.15",
+      "reason": "Native terminal dependency approved and built by pnpm 11.7.0."
     },
     {
-      "package": "@deepseek-ai/dsh-scope",
-      "version": "0.1.0-rc.8",
-      "reason": "Peer dependency resolved by standard npm peer resolution and required by rc8 agent packages."
+      "package": "koffi",
+      "version": "3.1.6",
+      "reason": "Native dependency approved and built by pnpm 11.7.0."
+    },
+    {
+      "package": "@deepseek-ai/dsh-subprocess-local",
+      "version": "0.1.1-rc.2",
+      "reason": "Official local subprocess helper approved and built by pnpm 11.7.0."
     }
   ]
 }

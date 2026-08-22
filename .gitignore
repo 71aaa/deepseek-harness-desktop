@@ -11,6 +11,7 @@ publish-*/
 
 # ===== DeepSeek Harness 官方运行时（本地检查副本，不提交）=====
 dsh-runtime/
+dsh-runtime-v*/
 
 # ===== 临时资源与过程文件 =====
 assets-src/_*

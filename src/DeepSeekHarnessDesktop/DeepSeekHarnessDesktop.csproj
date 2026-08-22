@@ -10,7 +10,7 @@
     <AssemblyName>DeepSeek Harness Desktop</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
     <Product>DeepSeek Harness Desktop</Product>
     <AssemblyTitle>DeepSeek Harness Desktop</AssemblyTitle>
     <Description>DeepSeek Harness 轻量级 Windows 桌面宿主：双击打开，点 X 关闭。</Description>
